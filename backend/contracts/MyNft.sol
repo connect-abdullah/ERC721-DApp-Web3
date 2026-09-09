@@ -21,6 +21,10 @@ contract MyNft {
         emit Transfer(address(0), msg.sender, tokenId);
     }
 
+    function totalMinted() external view returns (uint256) {
+        return nextTokenId;
+    }
+
     function ownerOf(uint256 tokenId) external view returns (address) {
         address owner = owners[tokenId];
         require(owner != address(0), "Token not minted");

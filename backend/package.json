@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "tsx scripts/deploy.ts",
+    "cli": "tsx scripts/cli.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +22,7 @@
     "typescript": "~6.0.3"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.6.1"
+    "@openzeppelin/contracts": "^5.6.1",
+    "ethers": "^6.15.0"
   }
 }
