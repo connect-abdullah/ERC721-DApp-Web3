@@ -21,7 +21,7 @@ function approvedLabel(
 ) {
   if (approvedError) return writeErrorMessage(approvedError);
   if (!approved) return "…";
-  if (approved === zeroAddress) return "Nobody approved";
+  if (approved === zeroAddress) return "-----";
   return shortenAddress(approved);
 }
 
