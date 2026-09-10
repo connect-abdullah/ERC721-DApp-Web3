@@ -9,6 +9,7 @@ export const backendRoot = path.resolve(scriptsDir, "..");
 export const repoRoot = path.resolve(backendRoot, "..");
 export const repoEnvPath = path.join(repoRoot, ".env");
 export const backendEnvPath = path.join(backendRoot, ".env");
+export const frontendEnvPath = path.join(repoRoot, "frontend", ".env.local");
 export const artifactPath = path.join(
   backendRoot,
   "artifacts/contracts/MyNft.sol/MyNft.json"
@@ -88,6 +89,10 @@ export function saveContractAddress(address: string) {
   if (!fs.existsSync(repoEnvPath) && !fs.existsSync(backendEnvPath)) {
     upsertEnv("CONTRACT_ADDRESS", address, backendEnvPath);
   }
+
+  const rpc = process.env.RPC_URL ?? "http://127.0.0.1:8545";
+  upsertEnv("NEXT_PUBLIC_CONTRACT_ADDRESS", address, frontendEnvPath);
+  upsertEnv("NEXT_PUBLIC_RPC_URL", rpc, frontendEnvPath);
 }
 
 export async function deployNft(wallet: Wallet): Promise<Contract> {
